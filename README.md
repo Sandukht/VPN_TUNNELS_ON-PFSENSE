@@ -1,6 +1,6 @@
 # VPN_TUNNELS_ON-PFSENSE
 
-##YSU final project
+YSU final project
 
 Install "swanctl_conf.py" on Pfsense systems and Template named "ipsec_template.xml" on Zabbix server to detect Pfsense VPN connections and render them on Zabbix server․
 
