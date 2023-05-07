@@ -27,7 +27,6 @@ def Parse():
             desc = desc_match.group(1)
 
             data[key] = {'local': local, 'remote': remote, 'description': desc}
-            # print('data[key1]"', data[key], type(data[key]))
         return data
 
     def get_JSON_format():
