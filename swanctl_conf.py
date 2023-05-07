@@ -1,14 +1,10 @@
-# !/usr/local/bin/python3.8
+#!/usr/local/bin/python3.8
 import re
 import json
 import sys
 
-import re
-import json
-import sys
 
 IPSEC_CONF = '/var/etc/ipsec/swanctl.conf'
-
 
 def Parse():
     with open(IPSEC_CONF, 'r') as file:
@@ -55,8 +51,9 @@ def get_JSON_format():
             '{#SOURCEIP}': value['local'],
             '{#DESCRIPTION}': value['description'],
         })
+    return json.dumps({'data': lis}, indent=4)
 
-    return json.dumps({'data': lis})
+
 
 
 if __name__ == '__main__':
