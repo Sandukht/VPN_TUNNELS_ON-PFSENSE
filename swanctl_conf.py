@@ -3,7 +3,6 @@ import re
 import json
 import sys
 
-
 IPSEC_CONF = '/var/etc/ipsec/swanctl.conf'
 
 def Parse():
@@ -23,28 +22,19 @@ def Parse():
             if not key_match or not local_match or not remote_match or not desc_match:
                 continue
             key = key_match.group(0)
-            # print('key1:',key)
             local = local_match.group(1)
             remote = remote_match.group(1)
             desc = desc_match.group(1)
-
-            """print('key:', key)
-            print('local:', local)
-            print('remote:', remote)
-            print('desc:', desc)"""
 
             data[key] = {'local': local, 'remote': remote, 'description': desc}
             # print('data[key1]"', data[key], type(data[key]))
         return data
 
-
-def get_JSON_format():
+    def get_JSON_format():
     data = Parse()
-    # print('data is:',data)
     lis = []
     conf = ''
     for key, value in data.items():
-        # print('data.items:', value)
         lis.append({
             '{#TUNNEL}': key,
             '{#TARGETIP}': value['remote'],
@@ -53,11 +43,6 @@ def get_JSON_format():
         })
     return json.dumps({'data': lis}, indent=4)
 
-
-
-
 if __name__ == '__main__':
     result = get_JSON_format()
-    # print(result)
-    # sys.exit(0)
     sys.exit(result)
